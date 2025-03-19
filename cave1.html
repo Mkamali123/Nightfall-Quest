@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cave Battle</title>
+    <title>Cave 1 - Embermaw</title>
     <style>
         body, html {
             margin: 0;
@@ -31,109 +31,17 @@
             position: absolute;
             top: 10%;
             left: 5%;
-            width: 500px;
-            background: rgba(0, 0, 0, 0.8);
+            width: 40%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
             font-size: 18px;
             line-height: 1.6;
             word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
-        /* Health Bars */
-        .health-container {
-            position: absolute;
-            top: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .health-bar {
-            width: 300px;
-            height: 25px;
-            background: grey;
-            border: 3px solid white;
-            margin: 5px;
-            position: relative;
-            border-radius: 5px;
-        }
-
-        .health-fill {
-            height: 100%;
-            width: 100%;
-            background: red;
-            border-radius: 5px;
-            transition: width 0.5s ease-in-out;
-        }
-
-        .health-text {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            top: 2px;
-            font-weight: bold;
-        }
-
-        /* Battle Controls */
-        .battle-container {
-            position: absolute;
-            bottom: 18%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-        }
-
-        .battle-btn {
-            padding: 10px 20px;
-            margin: 5px;
-            background: darkred;
-            color: white;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .battle-btn:hover {
-            background: crimson;
-        }
-
-        /* Inventory Styling */
-        .inventorycontainer {
-            position: absolute;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-        }
-
-        .inventory {
-            width: 80px;
-            height: 80px;
-            border: 3px solid white;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
-        }
-
-        .inventory:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .disabled {
-            background: grey;
-            cursor: not-allowed;
-        }
     </style>
 </head>
 <body>
@@ -141,105 +49,18 @@
     <!-- Background -->
     <iframe id="background-frame" src="cave1structure.html"></iframe>
 
-    <!-- Monster Info -->
+    <!-- Monster Info Box -->
     <div class="monster-text">
         <h2>EMBERMAW</h2>
-        <p><strong>Strengths:</strong> Fire Immune</p>
-        <p><strong>Weakness:</strong> Water-based attacks</p>
+        <p><strong>Strengths:</strong> Immune to heat and fire-based attacks</p>
+        <p><strong>Weakness:</strong> Weak against water, which cools and hardens its body, making it brittle</p>
         <p><strong>Attacks:</strong></p>
         <ul>
-            <li>🔥 Hellstorm Breath (-15 HP)</li>
-            <li>🌋 Lava Lash (-10 HP)</li>
-            <li>🔥 Smoldering Swipe (-5 HP)</li>
+            <li>🔥 Hellstorm Breath (Damage: -15): This little potato unleashes a devastating torrent of superheated flames.</li>
+            <li>🌋 Lava Lash (Damage: -10): A swift, molten slash that sears through armor.</li>
+            <li>🔥 Smoldering Swipe (Damage: -5): A quick attack leaving behind burning embers.</li>
         </ul>
     </div>
-
-    <!-- Health Bars -->
-    <div class="health-container">
-        <p>Player Health</p>
-        <div class="health-bar">
-            <div class="health-fill" id="playerHealth" style="width: 100%;"></div>
-            <span class="health-text" id="playerHealthText">100 HP</span>
-        </div>
-        <p>Monster Health</p>
-        <div class="health-bar">
-            <div class="health-fill" id="monsterHealth" style="width: 100%;"></div>
-            <span class="health-text" id="monsterHealthText">100 HP</span>
-        </div>
-    </div>
-
-    <!-- Battle Buttons -->
-    <div class="battle-container">
-        <button class="battle-btn" onclick="attackMonster()">Attack</button>
-        <button class="battle-btn" onclick="useItem()">Use Item</button>
-    </div>
-
-    <!-- Inventory -->
-    <div class="inventorycontainer">
-        <div class="inventory disabled" id="item1" onclick="selectItem('water')">💧</div>
-        <div class="inventory disabled" id="item2" onclick="selectItem('shield')">🛡️</div>
-    </div>
-
-    <script>
-        let playerHP = 100;
-        let monsterHP = 100;
-        let selectedItem = null;
-
-        function updateHealthBars() {
-            document.getElementById("playerHealth").style.width = playerHP + "%";
-            document.getElementById("playerHealthText").innerText = playerHP + " HP";
-
-            document.getElementById("monsterHealth").style.width = monsterHP + "%";
-            document.getElementById("monsterHealthText").innerText = monsterHP + " HP";
-        }
-
-        function attackMonster() {
-            let damage = Math.floor(Math.random() * 15) + 5; // Random 5-20 damage
-            monsterHP = Math.max(monsterHP - damage, 0);
-            alert("You attack Embermaw for " + damage + " damage!");
-
-            if (monsterHP > 0) {
-                monsterAttack();
-            } else {
-                alert("You defeated Embermaw!");
-            }
-
-            updateHealthBars();
-        }
-
-        function monsterAttack() {
-            let damage = Math.floor(Math.random() * 10) + 5; // Random 5-15 damage
-            playerHP = Math.max(playerHP - damage, 0);
-            alert("Embermaw attacks you for " + damage + " damage!");
-
-            if (playerHP === 0) {
-                alert("You have been defeated!");
-            }
-
-            updateHealthBars();
-        }
-
-        function selectItem(item) {
-            selectedItem = item;
-            alert(item + " selected!");
-        }
-
-        function useItem() {
-            if (selectedItem === "water") {
-                monsterHP = Math.max(monsterHP - 25, 0);
-                alert("You use water! It's super effective!");
-            } else if (selectedItem === "shield") {
-                playerHP = Math.min(playerHP + 20, 100);
-                alert("You use a shield! You recover 20 HP!");
-            } else {
-                alert("No item selected!");
-            }
-            selectedItem = null;
-            updateHealthBars();
-        }
-
-        updateHealthBars();
-    </script>
 
 </body>
 </html>
