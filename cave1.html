@@ -26,7 +26,7 @@
             z-index: -1;
         }
 
-        /* Monster introduction */
+        /* Monster Info Box */
         .monster-text {
             position: absolute;
             top: 10%;
@@ -35,10 +35,11 @@
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 20px;
+            line-height: 1.5;
         }
 
-        /* Health bars */
+        /* Health Bars */
         .health-container {
             position: absolute;
             top: 5%;
@@ -51,17 +52,19 @@
 
         .health-bar {
             width: 300px;
-            height: 20px;
+            height: 25px;
             background: grey;
-            border: 2px solid white;
+            border: 3px solid white;
             margin: 5px;
             position: relative;
+            border-radius: 5px;
         }
 
         .health-fill {
             height: 100%;
             width: 100%;
             background: red;
+            border-radius: 5px;
             transition: width 0.5s ease-in-out;
         }
 
@@ -73,10 +76,10 @@
             font-weight: bold;
         }
 
-        /* Battle Options */
+        /* Battle Controls */
         .battle-container {
             position: absolute;
-            bottom: 10%;
+            bottom: 15%;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -88,7 +91,7 @@
             background: darkred;
             color: white;
             border: none;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
             border-radius: 5px;
         }
@@ -97,7 +100,7 @@
             background: crimson;
         }
 
-        /* Inventory */
+        /* Inventory Styling */
         .inventorycontainer {
             position: absolute;
             bottom: 5%;
@@ -108,12 +111,16 @@
         }
 
         .inventory {
-            width: 60px;
-            height: 60px;
-            border: 2px solid white;
+            width: 80px;
+            height: 80px;
+            border: 3px solid white;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
         }
 
         .disabled {
