@@ -148,6 +148,35 @@
             font-size: 20px;
             cursor: pointer;
         }
+        .health-bar-container {
+  position: absolute;
+  top: 30px;
+  width: 250px;
+  z-index: 100;
+}
+
+.health-label {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.health-bar-bg {
+  background-color: #333;
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.health-bar-fill {
+  height: 100%;
+  width: 100%;
+  transition: width 0.4s ease;
+  background: linear-gradient(to right, purple, blue, black);
+  border-radius: 10px;
+}
+
     </style>
 </head>
 <body>
@@ -205,14 +234,27 @@ z-index: 500;
     display: none;
     position: absolute;
     bottom: 5%;
-    left: 30px;
+    left: 8%;
     transform: translate(0, 0);
     max-width: 30%;
     height: auto;
     z-index: 500;
 ">
+<!-- Player Health Bar -->
+<div class="health-bar-container" style="left: 50px;">
+  <div class="health-label">Player</div>
+  <div class="health-bar-bg">
+    <div class="health-bar-fill" id="player-health-bar"></div>
+  </div>
+</div>
 
-
+<!-- Monster Health Bar -->
+<div class="health-bar-container" style="right: 50px; position: absolute;">
+  <div class="health-label">Monster</div>
+  <div class="health-bar-bg">
+    <div class="health-bar-fill" id="monster-health-bar"></div>
+  </div>
+</div>
 
 
     <script>
@@ -265,10 +307,7 @@ z-index: 500;
                     timerElement.style.display = "none";
                     document.getElementById("monster-intro").style.display = "none";
                     document.getElementById("user-input-container").style.display = "block";
-
-                    document.body.insertAdjacentHTML('beforeend', '<div id="player-hp" style="position: absolute; top: 130px; left: 50px; font-size: 24px; color: white;">Player HP: 100</div>');
-                    document.body.insertAdjacentHTML('beforeend', '<div id="monster-hp" style="position: absolute; top: 130px; right: 450px; font-size: 24px; color: white;">Monster HP: 50</div>');
-                    document.getElementById("embermaw").style.display = "block";
+                     document.getElementById("embermaw").style.display = "block";
                    document.getElementById("player-img").style.display = "block"; // ⬅ Add this line!
 
                 }
@@ -296,9 +335,10 @@ const monsterAttacks = {
 };
 
 function updateHP() {
-    document.getElementById("player-hp").innerText = `Player HP: ${playerHP}`;
-    document.getElementById("monster-hp").innerText = `Monster HP: ${monsterHP}`;
+    document.getElementById("player-health-bar").style.width = `${playerHP}%`;
+    document.getElementById("monster-health-bar").style.width = `${monsterHP}%`;
 }
+
 function handleUserInput() {
     const userInput = parseInt(document.getElementById("user-input").value);
     const resultTextElement = document.getElementById("result-text");
@@ -339,18 +379,6 @@ function handleUserInput() {
         alert("Invalid input! Choose an option between 1 and 4 that you haven't chosen before.");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function monsterTurn() {
@@ -490,9 +518,6 @@ function nextLevelModal() {
         window.location.href = "../story2.html"; // Change to your next level page
     };
 }
-
-
-
 
     </script>
 </body>
