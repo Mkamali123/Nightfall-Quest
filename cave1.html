@@ -204,13 +204,14 @@ z-index: 500;
 <img id="player-img" src="catherine.webp" alt="Player Character" style="
     display: none;
     position: absolute;
-    top: 64%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    max-width: 40%;
+    bottom: 5%;
+    left: 8%;
+    transform: translate(0, 0);
+    max-width: 30%;
     height: auto;
     z-index: 500;
 ">
+
 
 
     <script>
@@ -267,7 +268,6 @@ z-index: 500;
                     document.body.insertAdjacentHTML('beforeend', '<div id="player-hp" style="position: absolute; top: 130px; left: 50px; font-size: 24px; color: white;">Player HP: 100</div>');
                     document.body.insertAdjacentHTML('beforeend', '<div id="monster-hp" style="position: absolute; top: 130px; right: 450px; font-size: 24px; color: white;">Monster HP: 50</div>');
                     document.getElementById("embermaw").style.display = "block";
-
                    document.getElementById("player-img").style.display = "block"; // ⬅ Add this line!
 
                 }
