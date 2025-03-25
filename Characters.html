@@ -183,11 +183,7 @@
 
 function selectCharacter(character) {
     localStorage.setItem("selectedCharacter", character);
-
-    const isHosted = location.hostname.includes("github.io");
-    const path = isHosted ? "/Nightfall-Quest/cave1.html" : "cave1.html";
-
-    window.location.href = path;
+    window.location.href = "cave1.html";
 }
 
 
