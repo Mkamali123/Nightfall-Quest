@@ -201,7 +201,7 @@ height: auto;
 z-index: 500;
 ">
     
-<img id="player-img" src="catherine.webp" alt="Player Character" style="
+<img id="player-img" src="" alt="Player Character" style="
     display: none;
     position: absolute;
     bottom: 5%;
@@ -211,6 +211,7 @@ z-index: 500;
     height: auto;
     z-index: 500;
 ">
+
 
 
 
@@ -416,9 +417,24 @@ function endGame(message) {
 }
 
 window.onload = function () {
-    typeText(); // Call the correct function to type the text
-   
-}
+    typeText(); // Already existing call
+
+    // Load selected character from localStorage
+    const selectedCharacter = localStorage.getItem("selectedCharacter");
+    const playerImg = document.getElementById("player-img");
+
+    if (selectedCharacter === "detective") {
+        playerImg.src = "detective.png"; // Or use the sticker version if you downloaded it
+    } else if (selectedCharacter === "shadow") {
+        playerImg.src = "shadow.png";
+    }
+
+    // Optional fallback image if nothing selected
+    if (!selectedCharacter) {
+        playerImg.src = "default.png";
+    }
+};
+
 function showRetryModal() {
     // Create modal HTML
     let retryModal = document.createElement("div");
