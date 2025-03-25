@@ -131,14 +131,14 @@
 
     <!-- Container for character cards -->
     <div class="container">
-        <div class="character" onclick="selectCharacter('cave1/cave1.html')" id="char1" tabindex="0" role="button" aria-label="Select The Detective, Weapon: Revolver, Power: Deduction & Intuition">
-            <div class="character-info">
+       <div class="character" onclick="selectCharacter('detective')" id="char1">
+ <div class="character-info">
                 <strong>The Detective</strong><br>
                 <!-- Additional description can go here -->
             </div>
         </div>
-        <div class="character" onclick="selectCharacter('cave1/cave1.html')" id="char2" tabindex="0" role="button" aria-label="Select The Shadow, Weapon: Hidden Blade, Power: Invisibility & Speed">
-            <div class="character-info">
+       <div class="character" onclick="selectCharacter('shadow')" id="char2">
+  <div class="character-info">
                 <strong>The Shadow</strong><br>
                 <!-- Additional description can go here -->
             </div>
@@ -181,9 +181,11 @@
             speechSynthesis.speak(speech);
         }
 
-        function selectCharacter() {
-            window.location.href = "story1.html";
-        }
+       function selectCharacter(character) {
+    localStorage.setItem("selectedCharacter", character);
+    window.location.href = "cave1/cave1.html";
+}
+
     </script>
 
 </body>
