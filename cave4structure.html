@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cave1 Background</title>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+       body {
+    font-family: UnifrakturMaguntia;
+    background: url('cave4.jpg') no-repeat center center;
+    background-attachment: fixed; /* Keeps the image static on scroll */
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    gap: 50px;
+}
+
+        /* Left large box */
+        .left-box {
+            background: rgba(44, 44, 45, 0.575);
+            padding: 30px;
+            width: 800px;
+            height: 57vh;
+            border-radius: 12px;
+            margin-bottom: 100px;
+            margin-top: 35px;
+            box-shadow: 0px 0px 15px rgba(182, 180, 183, 0.315);
+            backdrop-filter: blur(0.5px);
+            color: #997ea5;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+/* Right side of the page*/
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 150px; 
+        }
+
+        /* Right column*/
+        .right-box {
+            background: rgba(44, 44, 45, 0.575);
+                        padding: 20px;
+            width: 300px;
+            height: 70vh;
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px rgba(182, 180, 183, 0.315);
+            backdrop-filter: blur(0.5px);
+            color: #997ea5;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+                margin-bottom: 40px; /* Adds space below the box */
+                margin-top: 40px;
+
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #6a3f67;
+            border-radius: 5px;
+            background: rgba(82, 37, 71, 0.2);
+            color: #815c7e;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #6a636e;
+        }
+        
+        .logo-container {
+        position: absolute;
+        top: -90px; /* Adjusted to be visible */
+        left: 35%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .logo-container h1 {
+        font-family:'Times New Roman', Times, serif;
+        color: rgb(224, 58, 58); /* Ensure visibility */
+        font-size: 115px; /* Increase size if needed */
+    }
+       
+        @media screen and (max-width: 1024px) and (min-width: 601px) {
+            .logo { max-width: 350px; }
+            .logo-container { left: 58%; }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+       <h1>???</h1>
+    </div>
+
+    <div class="left-box"></div>
+    <div class="right-box"></div>
+
+</body>
+</html>
