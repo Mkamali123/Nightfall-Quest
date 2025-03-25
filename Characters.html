@@ -181,11 +181,15 @@
             speechSynthesis.speak(speech);
         }
 
-       function selectCharacter(character) {
+function selectCharacter(character) {
     localStorage.setItem("selectedCharacter", character);
-   window.location.href = "/Nightfall-Quest/cave1.html";
 
+    const isHosted = location.hostname.includes("github.io");
+    const path = isHosted ? "/Nightfall-Quest/cave1.html" : "cave1.html";
+
+    window.location.href = path;
 }
+
 
     </script>
 
